@@ -83,7 +83,10 @@ export function generateSampleDate(
   const serialSets = generateSerialNumbers(applicants-tatezumi, yourEntrys.map((entry) => entry.serialCode));
   const serials = Array.from(serialSets);
   for(let i = 0; i < serials.length;) {
-    const tumi = Math.max(1, Math.min(Math.floor(Math.random() * 10), serials.length - i));
+    let tumi = 1;
+    if(Math.random() > 0.8) {
+      tumi = Math.max(1, Math.min(Math.floor(Math.random() * 10), serials.length - i));
+    }
     const ren = Math.max(1, Math.floor(Math.random() * maxRenban));
     let applicantIDs: string[] = [];
     for(let j = 0; j < ren; j++) {
